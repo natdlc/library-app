@@ -1,3 +1,23 @@
+/* 
+
+~~Features to add~~
+
+- image upload
+- date added
+- # of pages read
+- 'no books' indicator when library is empty
+- placeholders on form
+- x button on form
+- customize form validation messages
+
+~~Bugs to fix~~
+
+- modal on mobile overflows
+- no space below add button in mobile
+- submit button generates error (see console)
+
+*/
+
 let cardsWrapper = document.querySelector('.cards-wrapper');
 let myLibrary = [];
 
