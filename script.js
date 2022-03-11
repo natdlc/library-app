@@ -1,18 +1,4 @@
-/* 
-
-fix remove feature in terms of library array and card index in dom
-
-*/
-
-// sample books
-let b1 = new Book('The Fellowship of the Ring (LOTR pt. 1)', 'J.R.R. Tolkien', 448, 'Fantasy', false);
-let b2 = new Book('The Kane Chronicles: The Red Pyramid', 'Rick Riordan', 517, 'Science Fiction', true);
-// sample books end
-
-//target existing elements
 let cardsWrapper = document.querySelector('.cards-wrapper');
-// target existing elements end
-
 let myLibrary = [];
 
 function Book(title, author, page, genre, read) {
@@ -26,14 +12,15 @@ function Book(title, author, page, genre, read) {
 function addBookToLib(title, author, page, genre, read) {
     let newBook = new Book(title, author, page, genre, read);
     myLibrary.push(newBook);
-    //create elements
-    
+
+    /* CREATE ELEMENTS */
+
     //card 
     let card = document.createElement('div');
     card.classList.add('card');
     card.dataset.id = myLibrary.length-1;
     cardsWrapper.appendChild(card);
-    
+
     //cover container
     let coverContainer = document.createElement('div');
     coverContainer.classList.add('cover-container');
@@ -59,19 +46,19 @@ function addBookToLib(title, author, page, genre, read) {
     //author
     let bookAuthor = document.createElement('p');
     bookAuthor.classList.add('author');
-    bookAuthor.innerText = author;
+    bookAuthor.innerText = `Author: ${author}`;
     bookInfoWrapper.appendChild(bookAuthor);
 
     //page count
     let pageCount = document.createElement('p');
     pageCount.classList.add('page-count');
-    pageCount.innerText = page;
+    pageCount.innerText = `Pages: ${page}`;
     bookInfoWrapper.appendChild(pageCount);
 
     //genre
     let bookGenre = document.createElement('p');
     bookGenre.classList.add('genre');
-    bookGenre.innerText = genre;
+    bookGenre.innerText = `Genre: ${genre}`;
     bookInfoWrapper.appendChild(bookGenre);
 
     //card buttons container
@@ -97,7 +84,7 @@ function addBookToLib(title, author, page, genre, read) {
     //read button
     let readBtn = document.createElement('input');
     readBtn.setAttribute('type', 'radio');
-    readBtn.setAttribute('name', `status-book-${myLibrary.length-1}`)
+    readBtn.setAttribute('name', `statusBook_${myLibrary.length-1}`)
     readBtn.setAttribute('id', `read-book-${myLibrary.length-1}`)
     readBtn.setAttribute('value', 'true');
     if (read == 'true') readBtn.checked = 'true';
@@ -116,7 +103,7 @@ function addBookToLib(title, author, page, genre, read) {
     //unread button
     let unreadBtn = document.createElement('input');
     unreadBtn.setAttribute('type', 'radio');
-    unreadBtn.setAttribute('name', `status-book-${myLibrary.length-1}`)
+    unreadBtn.setAttribute('name', `statusBook_${myLibrary.length-1}`)
     unreadBtn.setAttribute('id', `unread-book-${myLibrary.length-1}`)
     unreadBtn.setAttribute('value', 'false');
     if (read == 'false') unreadBtn.checked = 'true';
@@ -130,10 +117,11 @@ function addBookToLib(title, author, page, genre, read) {
 
     //remove btn function 
     removeBtn.addEventListener('click', e => {
-        let cardIndex = e.path[2].dataset.id;
-        e.path[2].remove();
-        // myLibrary.splice(cardIndex, 1)
-        console.log(cardIndex);
+        let cardElem = e.path[2];
+        let cardTitle = cardElem.children[1].innerText;
+        myLibrary.splice(myLibrary.findIndex(book => book.title == cardTitle), 1);
+        console.log(myLibrary);
+        cardElem.remove();
     })
 };
 
@@ -159,12 +147,11 @@ cancelBtn.addEventListener('click', () => {
 //submit button
 let submitBtn = document.querySelector('#submit-btn');
 submitBtn.addEventListener('click', () => {
-    modalWrapper.style = 'display: none';
     let bookTitle = titleInput.value;
     let bookAuthor = authorInput.value;
     let pageCount = pageInput.value;
     let genreInfo = genreInput.value;
-    let readStatus = document.querySelector('input[name=status-input]:checked').value;
+    let readStatus = document.querySelector('input[name=statusInput]:checked').value;
     addBookToLib(bookTitle, bookAuthor, pageCount, genreInfo, readStatus);
     titleInput.value = '';
     authorInput.value = '';
@@ -172,5 +159,5 @@ submitBtn.addEventListener('click', () => {
     genreInput.value = '';
     document.querySelector('#read-input').checked = false;
     document.querySelector('#unread-input').checked = false;
+    modalWrapper.style = 'display: none';
 })
-

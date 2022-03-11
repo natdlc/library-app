@@ -84,6 +84,12 @@ h1 {
     font-size: 18px;
 }
 
+.book-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
 p {
     font-size: 12px;
     color: rgb(0,0,0,0.70);
@@ -239,9 +245,4 @@ legend {
     transform: scale(1.02);
     font-weight: 600;
     background-color: #343434;
-}
-
-/* hide card template */
-.template {
-    display: none;
 }

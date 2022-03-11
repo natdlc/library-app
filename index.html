@@ -14,43 +14,42 @@
         </div>
         <button id="add-book">Add Book</button>
         <div class="modal-wrapper">
-            <div class="modal-box">
+            <form name="form" class="modal-box">
                 <legend>Add a New Book</legend>
-
                 <div class="control-wrapper">
                     <div class="control">
                         <label for="title-input">Title</label>
-                        <input type="text" id="title-input">
+                        <input type="text" id="title-input" name="titleInput" required>
                     </div>
                     <div class="control">
                         <label for="author-input">Author</label>
-                        <input type="text" id="author-input">
+                        <input type="text" id="author-input" name="authorInput" required>
                     </div>
                     <div class="control">
                         <label for="page-count-input">Pages</label>
-                        <input type="text" id="page-count-input">
+                        <input type="number" id="page-count-input" name="pageCountInput" required>
                     </div>
                     <div class="control">
                         <label for="genre-text-input">Genre</label>
-                        <input type="text" id="genre-text-input">
+                        <input type="text" id="genre-text-input" name="genreTextInput">
                     </div>
                     <div class="control">
                         <p>
-                            <input type="radio" name="status-input" id="read-input" value="true">
+                            <input type="radio" name="statusInput" id="read-input" value="true"required>
                             <label for="read-input">Read</label>
                         </p>
                         <p>
-                            <input type="radio" name="status-input" id="unread-input" value="false">
+                            <input type="radio" name="statusInput" id="unread-input" value="false">
                             <label for="unread-input">Unread</label>
                         </p>
                     </div>
                 </div>
 
                 <div class="control-btn-wrapper">
-                    <button id="cancel-btn">Cancel</button>
-                    <button id="submit-btn">Submit</button>
+                    <button type="button" id="cancel-btn">Cancel</button>
+                    <button type="submit" id="submit-btn">Submit</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <script src="./script.js"></script>
