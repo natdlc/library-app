@@ -96,24 +96,24 @@ function addBookToLib(title, author, page, genre, read) {
     readBtnLabel.innerText = 'Read';
     p1.appendChild(readBtnLabel);
 
-    //p for unread btn
+    //p for to read btn
     let p2 = document.createElement('p');
     radioContainer.appendChild(p2);
 
-    //unread button
-    let unreadBtn = document.createElement('input');
-    unreadBtn.setAttribute('type', 'radio');
-    unreadBtn.setAttribute('name', `statusBook_${myLibrary.length-1}`)
-    unreadBtn.setAttribute('id', `unread-book-${myLibrary.length-1}`)
-    unreadBtn.setAttribute('value', 'false');
-    if (read == 'false') unreadBtn.checked = 'true';
-    p2.appendChild(unreadBtn);
+    //to read button
+    let toReadBtn = document.createElement('input');
+    toReadBtn.setAttribute('type', 'radio');
+    toReadBtn.setAttribute('name', `statusBook_${myLibrary.length-1}`)
+    toReadBtn.setAttribute('id', `to-read-book-${myLibrary.length-1}`)
+    toReadBtn.setAttribute('value', 'false');
+    if (read == 'false') toReadBtn.checked = 'true';
+    p2.appendChild(toReadBtn);
 
-    //unread label
-    let unreadBtnLabel = document.createElement('label');
-    unreadBtnLabel.setAttribute('for', `unread-book-${myLibrary.length-1}`);
-    unreadBtnLabel.innerText = 'Unread';
-    p2.appendChild(unreadBtnLabel);
+    //to read label
+    let toReadBtnLabel = document.createElement('label');
+    toReadBtnLabel.setAttribute('for', `to-read-book-${myLibrary.length-1}`);
+    toReadBtnLabel.innerText = 'To Read';
+    p2.appendChild(toReadBtnLabel);
 
     //remove btn function 
     removeBtn.addEventListener('click', e => {
@@ -158,6 +158,6 @@ submitBtn.addEventListener('click', () => {
     pageInput.value = '';
     genreInput.value = '';
     document.querySelector('#read-input').checked = false;
-    document.querySelector('#unread-input').checked = false;
+    document.querySelector('#to-read-input').checked = false;
     modalWrapper.style = 'display: none';
 })
