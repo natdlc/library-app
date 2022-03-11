@@ -11,7 +11,7 @@
     <div class="wrapper">
         <h1>My Library</h1>
         <div class="cards-wrapper">
-            <div class="card">
+            <div class="card template ignore-this">
                 <div class="cover-container">
                     <img src="./assets/images/sample.png" alt="" class="cover">
                 </div>
@@ -31,30 +31,6 @@
                         <p>
                             <input type="radio" name="status-book-1" id="unread1" value="unread">
                             <label for="unread1">Unread</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="cover-container">
-                    <img src="./assets/images/sample.png" alt="" class="cover">
-                </div>
-                <h2 class="book-title">book-title-text</h2>
-                <div class="book-info-wrapper">
-                    <p class="author">author-text</p>
-                    <p class="page-count">page-count-text</p>
-                    <p class="genre">genre-text</p>
-                </div>
-                <div class="card-btns-container">
-                    <button id="remove-btn">Remove</button>
-                    <div class="radio-container">
-                        <p>
-                            <input type="radio" name="status-book-2" id="read2" value="read">
-                            <label for="read2">Read</label>
-                        </p>
-                        <p>
-                            <input type="radio" name="status-book-2" id="unread2" value="unread">
-                            <label for="unread2">Unread</label>
                         </p>
                     </div>
                 </div>
@@ -81,6 +57,16 @@
                     <div class="control">
                         <label for="genre-text-input">Genre</label>
                         <input type="text" id="genre-text-input">
+                    </div>
+                    <div class="control">
+                        <p>
+                            <input type="radio" name="status-input" id="read-input" value="read">
+                            <label for="read-input">Read</label>
+                        </p>
+                        <p>
+                            <input type="radio" name="status-input" id="unread-input" value="unread">
+                            <label for="unread-input">Unread</label>
+                        </p>
                     </div>
                 </div>
 

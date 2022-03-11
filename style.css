@@ -158,7 +158,7 @@ input[type='radio']:checked {
     left: 0;
     right: 0;
     background-color: rgb(0,0,0,0.5);
-    display: flex;
+    /* display: flex; */
     display: none;
     justify-content: center;
     align-items: center;
@@ -166,13 +166,12 @@ input[type='radio']:checked {
 
 .modal-box {
     width: 500px;
-    height: 500px;
     background-color: white;
     border-radius: 10px;
     display: flex;
     flex-flow: column;
     padding: 30px;
-    gap: 45px;
+    gap: 25px;
 }
 
 legend {
@@ -184,12 +183,16 @@ legend {
     display: flex;
     flex-flow: column;
     gap: 25px;
+    padding: 25px 10px;
+    border: 1px solid rgb(0,0,0,0.25);
+    border-left: none;
+    border-right: none;
 }
 
 .control {
     display: flex;
     flex-flow: column;
-    gap: 5px;
+    gap: 3px;
 }
 
 .control > input {
@@ -199,6 +202,21 @@ legend {
     height: 29px;
     padding: 5px;
     border-radius: 5px;
+}
+
+.control:last-child {
+    display: flex;
+    flex-flow: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.control:last-child > p {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 15px;
+    color: black;
 }
 
 .control-btn-wrapper {
@@ -221,4 +239,9 @@ legend {
     transform: scale(1.02);
     font-weight: 600;
     background-color: #343434;
+}
+
+/* hide card template */
+.template {
+    display: none;
 }
