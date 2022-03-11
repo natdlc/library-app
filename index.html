@@ -13,45 +13,83 @@
         <div class="cards-wrapper">
             <div class="card">
                 <div class="cover-container">
-                    <img src="" alt="" class="cover">
+                    <img src="./assets/images/sample.png" alt="" class="cover">
                 </div>
                 <h2 class="book-title">book-title-text</h2>
-                <p class="author">author-text</p>
-                <p class="page-count">page-count-text</p>
-                <p class="genre">genre-text</p>
+                <div class="book-info-wrapper">
+                    <p class="author">author-text</p>
+                    <p class="page-count">page-count-text</p>
+                    <p class="genre">genre-text</p>
+                </div>
                 <div class="card-btns-container">
-                    <button class="remove-btn">remove-btn-text</button>
-                    <button class="read-toggle-btn">read-toggle-btn-text</button>
+                    <button id="remove-btn">Remove</button>
+                    <div class="radio-container">
+                        <p>
+                            <input type="radio" name="status-book-1" id="read1" value="read">
+                            <label for="read1">Read</label>
+                        </p>
+                        <p>
+                            <input type="radio" name="status-book-1" id="unread1" value="unread">
+                            <label for="unread1">Unread</label>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="card">
                 <div class="cover-container">
-                    <img src="" alt="" class="cover">
+                    <img src="./assets/images/sample.png" alt="" class="cover">
                 </div>
                 <h2 class="book-title">book-title-text</h2>
-                <p class="author">author-text</p>
-                <p class="page-count">page-count-text</p>
-                <p class="genre">genre-text</p>
-                <div class="card-btns-container">
-                    <button class="remove-btn">remove-btn-text</button>
-                    <button class="read-toggle-btn">read-toggle-btn-text</button>
+                <div class="book-info-wrapper">
+                    <p class="author">author-text</p>
+                    <p class="page-count">page-count-text</p>
+                    <p class="genre">genre-text</p>
                 </div>
-            </div>
-            <div class="card">
-                <div class="cover-container">
-                    <img src="" alt="" class="cover">
-                </div>
-                <h2 class="book-title">book-title-text</h2>
-                <p class="author">author-text</p>
-                <p class="page-count">page-count-text</p>
-                <p class="genre">genre-text</p>
                 <div class="card-btns-container">
-                    <button class="remove-btn">remove-btn-text</button>
-                    <button class="read-toggle-btn">read-toggle-btn-text</button>
+                    <button id="remove-btn">Remove</button>
+                    <div class="radio-container">
+                        <p>
+                            <input type="radio" name="status-book-2" id="read2" value="read">
+                            <label for="read2">Read</label>
+                        </p>
+                        <p>
+                            <input type="radio" name="status-book-2" id="unread2" value="unread">
+                            <label for="unread2">Unread</label>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        <button>New book</button>
+        <button>Add Book</button>
+        <div class="modal-wrapper">
+            <div class="modal-box">
+                <legend>Add a New Book</legend>
+
+                <div class="control-wrapper">
+                    <div class="control">
+                        <label for="title-input">Title</label>
+                        <input type="text" id="title-input">
+                    </div>
+                    <div class="control">
+                        <label for="author-input">Author</label>
+                        <input type="text" id="author-input">
+                    </div>
+                    <div class="control">
+                        <label for="page-count-input">Pages</label>
+                        <input type="text" id="page-count-input">
+                    </div>
+                    <div class="control">
+                        <label for="genre-text-input">Genre</label>
+                        <input type="text" id="genre-text-input">
+                    </div>
+                </div>
+
+                <div class="control-btn-wrapper">
+                    <button>Cancel</button>
+                    <button>Submit</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="./script.js"></script>
 </body>
