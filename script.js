@@ -1,3 +1,9 @@
+/* 
+
+fix remove feature in terms of library array and card index in dom
+
+*/
+
 // sample books
 let b1 = new Book('The Fellowship of the Ring (LOTR pt. 1)', 'J.R.R. Tolkien', 448, 'Fantasy', false);
 let b2 = new Book('The Kane Chronicles: The Red Pyramid', 'Rick Riordan', 517, 'Science Fiction', true);
@@ -15,7 +21,7 @@ function Book(title, author, page, genre, read) {
     this.page = page;
     this.genre = genre;
     this.read = read;
-}
+};
 
 function addBookToLib(title, author, page, genre, read) {
     let newBook = new Book(title, author, page, genre, read);
@@ -93,8 +99,11 @@ function addBookToLib(title, author, page, genre, read) {
     readBtn.setAttribute('type', 'radio');
     readBtn.setAttribute('name', `status-book-${myLibrary.length-1}`)
     readBtn.setAttribute('id', `read-book-${myLibrary.length-1}`)
-    readBtn.setAttribute('value', 'read');
+    readBtn.setAttribute('value', 'true');
+    if (read == 'true') readBtn.checked = 'true';
     p1.appendChild(readBtn);
+
+    //read label
     let readBtnLabel = document.createElement('label');
     readBtnLabel.setAttribute('for', `read-book-${myLibrary.length-1}`);
     readBtnLabel.innerText = 'Read';
@@ -109,17 +118,59 @@ function addBookToLib(title, author, page, genre, read) {
     unreadBtn.setAttribute('type', 'radio');
     unreadBtn.setAttribute('name', `status-book-${myLibrary.length-1}`)
     unreadBtn.setAttribute('id', `unread-book-${myLibrary.length-1}`)
-    unreadBtn.setAttribute('value', 'read');
+    unreadBtn.setAttribute('value', 'false');
+    if (read == 'false') unreadBtn.checked = 'true';
     p2.appendChild(unreadBtn);
+
+    //unread label
     let unreadBtnLabel = document.createElement('label');
     unreadBtnLabel.setAttribute('for', `unread-book-${myLibrary.length-1}`);
     unreadBtnLabel.innerText = 'Unread';
     p2.appendChild(unreadBtnLabel);
-}
 
-addBookToLib('book 1', 'author 1', 111, 'genre1', false);
-addBookToLib('book 2', 'author 2', 222, 'genre2', false);
-addBookToLib('book 3', 'author', 333, 'genre', false);
-addBookToLib('book 4', 'author', 444, 'genre', false);
+    //remove btn function 
+    removeBtn.addEventListener('click', e => {
+        let cardIndex = e.path[2].dataset.id;
+        e.path[2].remove();
+        // myLibrary.splice(cardIndex, 1)
+        console.log(cardIndex);
+    })
+};
 
-console.log(myLibrary);
+//add book button
+let addBookBtn = document.querySelector('#add-book');
+let modalWrapper = document.querySelector('.modal-wrapper');
+addBookBtn.addEventListener('click', () => {
+    modalWrapper.style = 'display: flex';
+});
+
+//get form elements
+let titleInput = document.querySelector('#title-input');
+let authorInput = document.querySelector('#author-input');
+let pageInput = document.querySelector('#page-count-input');
+let genreInput = document.querySelector('#genre-text-input');
+
+//cancel button from modal
+let cancelBtn = document.querySelector('#cancel-btn');
+cancelBtn.addEventListener('click', () => {
+    modalWrapper.style = 'display: none';
+});
+
+//submit button
+let submitBtn = document.querySelector('#submit-btn');
+submitBtn.addEventListener('click', () => {
+    modalWrapper.style = 'display: none';
+    let bookTitle = titleInput.value;
+    let bookAuthor = authorInput.value;
+    let pageCount = pageInput.value;
+    let genreInfo = genreInput.value;
+    let readStatus = document.querySelector('input[name=status-input]:checked').value;
+    addBookToLib(bookTitle, bookAuthor, pageCount, genreInfo, readStatus);
+    titleInput.value = '';
+    authorInput.value = '';
+    pageInput.value = '';
+    genreInput.value = '';
+    document.querySelector('#read-input').checked = false;
+    document.querySelector('#unread-input').checked = false;
+})
+

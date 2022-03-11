@@ -11,32 +11,8 @@
     <div class="wrapper">
         <h1>My Library</h1>
         <div class="cards-wrapper">
-            <div class="card template ignore-this">
-                <div class="cover-container">
-                    <img src="./assets/images/sample.png" alt="" class="cover">
-                </div>
-                <h2 class="book-title">book-title-text</h2>
-                <div class="book-info-wrapper">
-                    <p class="author">author-text</p>
-                    <p class="page-count">page-count-text</p>
-                    <p class="genre">genre-text</p>
-                </div>
-                <div class="card-btns-container">
-                    <button id="remove-btn">Remove</button>
-                    <div class="radio-container">
-                        <p>
-                            <input type="radio" name="status-book-1" id="read1" value="read">
-                            <label for="read1">Read</label>
-                        </p>
-                        <p>
-                            <input type="radio" name="status-book-1" id="unread1" value="unread">
-                            <label for="unread1">Unread</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
-        <button>Add Book</button>
+        <button id="add-book">Add Book</button>
         <div class="modal-wrapper">
             <div class="modal-box">
                 <legend>Add a New Book</legend>
@@ -60,19 +36,19 @@
                     </div>
                     <div class="control">
                         <p>
-                            <input type="radio" name="status-input" id="read-input" value="read">
+                            <input type="radio" name="status-input" id="read-input" value="true">
                             <label for="read-input">Read</label>
                         </p>
                         <p>
-                            <input type="radio" name="status-input" id="unread-input" value="unread">
+                            <input type="radio" name="status-input" id="unread-input" value="false">
                             <label for="unread-input">Unread</label>
                         </p>
                     </div>
                 </div>
 
                 <div class="control-btn-wrapper">
-                    <button>Cancel</button>
-                    <button>Submit</button>
+                    <button id="cancel-btn">Cancel</button>
+                    <button id="submit-btn">Submit</button>
                 </div>
             </div>
         </div>
