@@ -3,12 +3,14 @@
 ~~Features to add~~
 
 - image upload
+- improve design when image not uploaded
 - date added
-- # of pages read
+- # of pages read (possible bar display)
 - 'no books' indicator when library is empty
 - placeholders on form
 - x button on form
 - customize form validation messages
+- mobile friendly display
 
 ~~Bugs to fix~~
 
@@ -152,7 +154,7 @@ addBookBtn.addEventListener('click', () => {
     modalWrapper.style = 'display: flex';
 });
 
-//get form elements
+//get control elements
 let titleInput = document.querySelector('#title-input');
 let authorInput = document.querySelector('#author-input');
 let pageInput = document.querySelector('#page-count-input');
