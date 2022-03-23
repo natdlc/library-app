@@ -5,69 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
 <body>
     <div class="main-wrapper">
-        <h1>My Library</h1>
-        <div class="books-wrapper">
-            <div class="book-card">
-                <h2>book title</h2>
+        <h1>Your Library</h1>
+        <ul class="books-wrapper">
+            <li class="book-card">
+                <div class="title-and-x">
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, est.</h2>
+                    <p id="delete-btn">x</p>
+                </div>
                 <div class="book-info">
                     <div class="author">
-                        <h3>author</h3>
-                        <p>author name</p>
+                        <h3>Author</h3>
+                        <p>Test Name C.</p>
                     </div>
                     <div class="page-number">
-                        <h3># of pages</h3>
-                        <p>page #</p>
+                        <h3>Page Count</h3>
+                        <p>220</p>
                     </div>
                     <div class="read-status">
-                        <h3>read status</h3>
-                        <p>yes</p>
+                        <h3>Read Status</h3>
+                        <select name="" id="read-status">
+                            <option value="complete">Complete</option>
+                            <option value="in progress" selected>In Progress</option>
+                            <option value="not started">Not Started</option>
+                        </select>
                     </div>
                 </div>
-            </div>
-            <div class="book-card">
-                <h2>book title</h2>
-                <div class="book-info">
-                    <div class="author">
-                        <h3>author</h3>
-                        <p>author name</p>
-                    </div>
-                    <div class="page-number">
-                        <h3># of pages</h3>
-                        <p>page #</p>
-                    </div>
-                    <div class="read-status">
-                        <h3>read status</h3>
-                        <p>yes</p>
-                    </div>
-                </div>
-            </div>
-            <div class="book-card">
-                <h2>book title</h2>
-                <div class="book-info">
-                    <div class="author">
-                        <h3>author</h3>
-                        <p>author name</p>
-                    </div>
-                    <div class="page-number">
-                        <h3># of pages</h3>
-                        <p>page #</p>
-                    </div>
-                    <div class="read-status">
-                        <h3>Complete</h3>
-                        <p>yes</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button id="add-book">+</button>
-    </div>
-    <div class="add-book-modal">
-        <form action=""></form>
+            </li>
+        </ul>
+        <button id="add-book">Add Book</button>
     </div>
 </body>
 </html>
