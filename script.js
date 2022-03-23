@@ -35,48 +35,52 @@ const Library = (() => {
         const completeOpt = document.createElement('option');
         const inProgressOpt = document.createElement('option');
         const notStartedOpt = document.createElement('option');
-        const selectedOpt = bookDetails[3];
+        
+
         bookCard.classList.add('book-card');
-        wrapper.appendChild(bookCard);
         titleAndX.classList.add('title-and-x');
-        bookCard.appendChild(titleAndX);
-        title.innerText = bookDetails[0];
-        titleAndX.appendChild(title);
-        delBtn.innerText = 'X';
-        delBtn.setAttribute('id', 'delete-btn');
-        titleAndX.appendChild(delBtn);
         bookInfo.classList.add('book-info');
-        bookCard.appendChild(bookInfo);
         authorBox.classList.add('author');
-        bookInfo.appendChild(authorBox);
-        authorLabel.innerText = 'Author';
-        authorBox.appendChild(authorLabel);
-        author.innerText = bookDetails[1];
-        authorBox.appendChild(author);
         pageCountBox.classList.add('page-number');
-        bookInfo.appendChild(pageCountBox);
-        pageCountLabel.innerText = 'Page Count';
-        pageCountBox.appendChild(pageCountLabel);
-        pageCount.innerText = bookDetails[2];
-        pageCountBox.appendChild(pageCount);
         readStatusBox.classList.add('read-status');
-        bookInfo.appendChild(readStatusBox);
+
+        title.innerText = bookDetails[0];
+        author.innerText = bookDetails[1];
+        pageCount.innerText = bookDetails[2];
+        const selectedOpt = bookDetails[3];
+        delBtn.innerText = 'X';
+        authorLabel.innerText = 'Author';
+        pageCountLabel.innerText = 'Page Count';
         readStatusLabel.innerText = 'Read Status';
-        readStatusBox.appendChild(readStatusLabel);
-        readSelection.setAttribute('name', 'readStatus');
-        readSelection.setAttribute('id', 'read-status');
-        readStatusBox.appendChild(readSelection);
-        completeOpt.setAttribute('value', 'complete');
         completeOpt.innerText = 'Complete';
-        inProgressOpt.setAttribute('value', 'in progress');
         inProgressOpt.innerText = 'In Progress';
-        notStartedOpt.setAttribute('value', 'not started');
         notStartedOpt.innerText = 'Not Started';
 
-        selectedOpt === 'complete' ? completeOpt.setAttribute('selected', '') : 
-            selectedOpt === 'in progress' ? inProgressOpt.setAttribute('selected', '') : 
-            notStartedOpt.setAttribute('selected', '');
-
+        delBtn.setAttribute('id', 'delete-btn');        
+        readSelection.setAttribute('name', 'readStatus');
+        readSelection.setAttribute('id', 'read-status');
+        completeOpt.setAttribute('value', 'complete');
+        inProgressOpt.setAttribute('value', 'in progress');
+        notStartedOpt.setAttribute('value', 'not started');
+        
+        if (selectedOpt === 'complete') completeOpt.setAttribute('selected', '')
+        else if (selectedOpt === 'in progress') inProgressOpt.setAttribute('selected', '')
+        else notStartedOpt.setAttribute('selected', '');
+        
+        wrapper.appendChild(bookCard);
+        bookCard.appendChild(titleAndX);
+        titleAndX.appendChild(title);
+        titleAndX.appendChild(delBtn);
+        bookCard.appendChild(bookInfo);
+        bookInfo.appendChild(authorBox);
+        authorBox.appendChild(authorLabel);
+        authorBox.appendChild(author);
+        bookInfo.appendChild(pageCountBox);
+        pageCountBox.appendChild(pageCountLabel);
+        pageCountBox.appendChild(pageCount);
+        bookInfo.appendChild(readStatusBox);
+        readStatusBox.appendChild(readStatusLabel);
+        readStatusBox.appendChild(readSelection);
         readSelection.appendChild(completeOpt);
         readSelection.appendChild(inProgressOpt);
         readSelection.appendChild(notStartedOpt);
