@@ -35,7 +35,6 @@ const Library = (() => {
         const completeOpt = document.createElement('option');
         const inProgressOpt = document.createElement('option');
         const notStartedOpt = document.createElement('option');
-        
 
         bookCard.classList.add('book-card');
         titleAndX.classList.add('title-and-x');
@@ -56,6 +55,7 @@ const Library = (() => {
         inProgressOpt.innerText = 'In Progress';
         notStartedOpt.innerText = 'Not Started';
 
+        bookCard.setAttribute('data-key', `${library.length-1}`)
         delBtn.setAttribute('id', 'delete-btn');        
         readSelection.setAttribute('name', 'readStatus');
         readSelection.setAttribute('id', 'read-status');
@@ -85,7 +85,17 @@ const Library = (() => {
         readSelection.appendChild(inProgressOpt);
         readSelection.appendChild(notStartedOpt);
 
-    }
+        delBtn.addEventListener('click', e => {
+            let cardIndex = e.path[2].dataset.key;
+            library.splice(cardIndex, 1, null);
+            bookCard.remove();
+        });
+
+        readSelection.addEventListener('click', e => {
+            let cardIndex = e.path[3].dataset.key;
+            library[cardIndex].readStatus = e.target.value;
+        });
+    };
 
     const createNewBookModal = () => {
         const body = Elem.body;
@@ -141,7 +151,7 @@ const Library = (() => {
         inProgressOpt.setAttribute('value', 'in progress');
         inProgressOpt.innerText = 'In Progress';
         readInpSelect.appendChild(inProgressOpt);
-        notStartedOpt.setAttribute('value', 'Not Started');
+        notStartedOpt.setAttribute('value', 'not started');
         notStartedOpt.innerText = 'Not Started';
         readInpSelect.appendChild(notStartedOpt);
         btnsWrapper.classList.add('buttons-wrapper');
@@ -164,6 +174,7 @@ const Library = (() => {
             library.push(new Book(...bookInfo));
             createBookCard(...bookInfo);
             addBookModal.remove();
+            console.log(library);
         })
     };
 
@@ -171,5 +182,3 @@ const Library = (() => {
         createNewBookModal();
     })
 })();
-
-//form[0].validity.valueMissing
