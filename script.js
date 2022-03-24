@@ -8,7 +8,7 @@ const Library = (() => {
         };
     };
 
-    let library = [];
+    let library = {};
 
     const Elem = (() => {
         const body = document.querySelector('body');
@@ -16,7 +16,7 @@ const Library = (() => {
         return {body, booksWrapper};
     })();
 
-    const createBookCard = (...bookDetails) => {
+    const createBookCard = bookDetails => {
         const wrapper = Elem.booksWrapper;
         const bookCard = document.createElement('li');
         const titleAndX = document.createElement('div');
@@ -55,7 +55,6 @@ const Library = (() => {
         inProgressOpt.innerText = 'In Progress';
         notStartedOpt.innerText = 'Not Started';
 
-        bookCard.setAttribute('data-key', `${library.length-1}`)
         delBtn.setAttribute('id', 'delete-btn');        
         readSelection.setAttribute('name', 'readStatus');
         readSelection.setAttribute('id', 'read-status');
@@ -85,16 +84,12 @@ const Library = (() => {
         readSelection.appendChild(inProgressOpt);
         readSelection.appendChild(notStartedOpt);
 
-        delBtn.addEventListener('click', e => {
-            let cardIndex = e.path[2].dataset.key;
-            library.splice(cardIndex, 1, null);
+        delBtn.addEventListener('click', () => {
+            delete library[title.innerText];
             bookCard.remove();
         });
 
-        readSelection.addEventListener('click', e => {
-            let cardIndex = e.path[3].dataset.key;
-            library[cardIndex].readStatus = e.target.value;
-        });
+        readSelection.addEventListener('click', e => {library[title.innerText].readStatus = e.path[0].value});
     };
 
     const createNewBookModal = () => {
@@ -166,19 +161,17 @@ const Library = (() => {
         cancel.addEventListener('click', () => {addBookModal.remove();});
 
         submit.addEventListener('click', () => {
-            if (form[0].validity.valueMissing || 
-                form[1].validity.valueMissing || 
-                form[2].validity.valueMissing) 
-                {return;};
+            if (form[0].validity.valueMissing || form[1].validity.valueMissing || form[2].validity.valueMissing) return;
             let bookInfo = [titleInp.value, authorInp.value, pagesInp.value, form[3].value]
-            library.push(new Book(...bookInfo));
-            createBookCard(...bookInfo);
+            addNewBook(bookInfo);
             addBookModal.remove();
-            console.log(library);
-        })
+        });
     };
 
-    document.querySelector('#add-book').addEventListener('click', () => {
-        createNewBookModal();
-    })
+    const addNewBook = bookInfo => {
+        createBookCard(bookInfo);
+        library[bookInfo[0]] = new Book(...bookInfo);
+    };
+
+    document.querySelector('#add-book').addEventListener('click', () => {createNewBookModal()});
 })();

@@ -73,6 +73,13 @@ button {
     cursor: pointer;
 }
 
+button:hover, button:focus   {
+    border: 1px solid rgb(157, 157, 157);
+    color: black;
+    background-color: rgb(230, 230, 230);
+    font-weight: 600;
+}
+
 .main-wrapper {
     width: 80%;
     height: 80%;
