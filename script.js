@@ -110,59 +110,62 @@ const Library = (() => {
         const btnsWrapper = document.createElement('div');
         const cancel = document.createElement('button');
         const submit = document.createElement('button');
-        addBookModal.classList.add('add-book-modal');
-        body.appendChild(addBookModal);
-        addBookModal.appendChild(form);
-        legend.innerText = 'New Book';
-        form.appendChild(legend);
-        ctrlsWrapper.classList.add('controls-wrapper');
-        form.appendChild(ctrlsWrapper);
+        
         titleInp.setAttribute('type', 'text');
         titleInp.setAttribute('id', 'title-input');
         titleInp.setAttribute('placeholder', 'Title');
         titleInp.setAttribute('required','');
-        ctrlsWrapper.appendChild(titleInp);
         authorInp.setAttribute('type', 'text');
         authorInp.setAttribute('id', 'author-input');
         authorInp.setAttribute('placeholder', 'Author');
         authorInp.setAttribute('required','');
-        ctrlsWrapper.appendChild(authorInp);
         pagesInp.setAttribute('type', 'number');
         pagesInp.setAttribute('id', 'pages-input');
         pagesInp.setAttribute('placeholder', 'Page Count');
         pagesInp.setAttribute('required','');
-        ctrlsWrapper.appendChild(pagesInp);
-        readCtrl.classList.add('read-control');
-        ctrlsWrapper.appendChild(readCtrl);
         readInpLabel.setAttribute('for', 'read-status-input');
-        readInpLabel.innerText = 'Read Status';
-        readCtrl.appendChild(readInpLabel);
         readInpSelect.setAttribute('id', 'read-status-input');
         readInpSelect.setAttribute('name', 'readStatusInput');
-        readCtrl.appendChild(readInpSelect);
         completeOpt.setAttribute('value', 'complete');
-        completeOpt.innerText = 'Complete';
-        readInpSelect.appendChild(completeOpt);
         inProgressOpt.setAttribute('value', 'in progress');
-        inProgressOpt.innerText = 'In Progress';
-        readInpSelect.appendChild(inProgressOpt);
         notStartedOpt.setAttribute('value', 'not started');
-        notStartedOpt.innerText = 'Not Started';
-        readInpSelect.appendChild(notStartedOpt);
-        btnsWrapper.classList.add('buttons-wrapper');
-        form.appendChild(btnsWrapper);
         cancel.setAttribute('type','button');
-        cancel.innerText = 'Cancel';
-        btnsWrapper.appendChild(cancel);
         submit.setAttribute('type', 'submit');
+        
+        addBookModal.classList.add('add-book-modal');
+        ctrlsWrapper.classList.add('controls-wrapper');
+        readCtrl.classList.add('read-control');
+        btnsWrapper.classList.add('buttons-wrapper');
+
+        legend.innerText = 'New Book';
+        readInpLabel.innerText = 'Read Status';
+        completeOpt.innerText = 'Complete';
+        notStartedOpt.innerText = 'Not Started';
+        cancel.innerText = 'Cancel';
         submit.innerText = 'Submit';
+        
+        body.appendChild(addBookModal);
+        addBookModal.appendChild(form);
+        form.appendChild(legend);
+        form.appendChild(ctrlsWrapper);
+        ctrlsWrapper.appendChild(titleInp);
+        ctrlsWrapper.appendChild(authorInp);
+        ctrlsWrapper.appendChild(pagesInp);
+        ctrlsWrapper.appendChild(readCtrl);
+        readCtrl.appendChild(readInpLabel);
+        readCtrl.appendChild(readInpSelect);
+        readInpSelect.appendChild(completeOpt);
+        readInpSelect.appendChild(inProgressOpt);
+        readInpSelect.appendChild(notStartedOpt);
+        form.appendChild(btnsWrapper);
+        btnsWrapper.appendChild(cancel);
         btnsWrapper.appendChild(submit);
 
         cancel.addEventListener('click', () => {addBookModal.remove();});
 
         submit.addEventListener('click', () => {
             if (form[0].validity.valueMissing || form[1].validity.valueMissing || form[2].validity.valueMissing) return;
-            let bookInfo = [titleInp.value, authorInp.value, pagesInp.value, form[3].value]
+            let bookInfo = [titleInp.value, authorInp.value, pagesInp.value, form[3].value];
             addNewBook(bookInfo);
             addBookModal.remove();
         });
