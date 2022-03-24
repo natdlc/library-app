@@ -110,7 +110,7 @@ const Library = (() => {
         const btnsWrapper = document.createElement('div');
         const cancel = document.createElement('button');
         const submit = document.createElement('button');
-        
+
         titleInp.setAttribute('type', 'text');
         titleInp.setAttribute('id', 'title-input');
         titleInp.setAttribute('placeholder', 'Title');
@@ -140,6 +140,7 @@ const Library = (() => {
         legend.innerText = 'New Book';
         readInpLabel.innerText = 'Read Status';
         completeOpt.innerText = 'Complete';
+        inProgressOpt.innerText = 'In Progress';
         notStartedOpt.innerText = 'Not Started';
         cancel.innerText = 'Cancel';
         submit.innerText = 'Submit';
